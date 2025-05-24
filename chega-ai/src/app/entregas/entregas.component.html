@@ -1,0 +1,92 @@
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <button class="sidebar-toggle" id="sidebar-toggle">
+      <i data-feather="chevron-left"></i>
+    </button>
+    <div class="logo-container">
+      <i data-feather="package"></i>
+      <h2>Gestão</h2>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/mainLogin"  class="active">
+        <i data-feather="home"></i>
+        <span>Início</span>
+      </a>
+      <a routerLink="/morador">
+        <i data-feather="users"></i>
+        <span>Moradores</span>
+      </a>
+      
+      <a routerLink="/entregas">
+        <i data-feather="bell"></i>
+        <span>Entregas</span>
+      </a>
+    </nav>
+
+    <div class="user-profile">
+      <div class="user-avatar">P</div>
+      <div class="user-info">
+        <span class="user-name">Porteiro</span>
+        <span class="user-role">Administrador</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Conteúdo principal -->
+  <div class="main-content">
+    <header class="header">
+      <div class="header-content">
+        <h1 class="logo">ChegaAí</h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="cadastro">
+        <h2>Cadastro de Pedidos</h2>
+        <form class="form" (ngSubmit)="cadastrarPedido()" #pedidoForm="ngForm">
+         <select [(ngModel)]="moradorSelecionado" name="morador" required>
+  <option *ngFor="let morador of moradores" [value]="morador.id">
+  {{ morador.nome }}
+</option>
+
+
+</select>
+
+
+           <input
+            type="text"
+            placeholder="Descrição do pedido"
+            required
+            [(ngModel)]="descricao"
+            name="descricao"
+            #descricaoModel="ngModel"
+          />
+
+          <input
+            type="datetime-local"
+            required
+            [(ngModel)]="dataRecebimento"
+            name="dataRecebimento"
+            #dataModel="ngModel"
+          />
+
+          <button
+            type="submit"
+            class="btn-primary"
+            [disabled]="pedidoForm.invalid"
+          >
+            Cadastrar Pedido
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Sistema de Entregas</p>
+    </footer>
+  </div>
+
+  <script src="entregas.js"></script>
+</body>

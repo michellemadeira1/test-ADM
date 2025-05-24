@@ -1,0 +1,152 @@
+<!-- Botão Voltar fixo no topo da página, fora do container -->
+
+<div class="container">
+  <header>
+    <h1><i class="fas fa-building"></i> Gestão de Moradores</h1>
+    <p class="subtitle">Sistema de cadastro e controle de moradores do condomínio</p>
+  </header>
+
+  <nav class="navigation">
+    <a routerLink="/mainLogin" class="btn-voltar" title="Voltar para Página Inicial">
+      <i class="fas fa-arrow-left"></i> Voltar para Página Inicial
+    </a>
+  </nav>
+
+  <main>
+    <section class="card" id="form-section">
+      <div class="form-header">
+        <h2><i class="fas fa-user-plus"></i> Cadastro de Morador</h2>
+      </div>
+
+      <form [formGroup]="moradorForm" (ngSubmit)="cadastrarMorador()">
+        <input type="hidden" formControlName="id" />
+
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" formControlName="nome" placeholder="Ex: João da Silva" />
+        </div>
+
+        <div class="form-group">
+          <label for="apartamento">Apartamento</label>
+          <input type="text" id="apartamento" formControlName="apartamento" placeholder="Ex: Bloco A, Apto 101" />
+        </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" formControlName="telefone" placeholder="Ex: (11) 99999-9999" />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Salvar
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="moradorForm.reset()">
+            <i class="fas fa-undo"></i> Limpar
+          </button>
+        </div>
+      </form>
+
+      <p *ngIf="erroMensagem" class="error-message">{{ erroMensagem }}</p>
+    </section>
+
+    <section class="card" id="list-section">
+      <div class="section-header">
+        <h2><i class="fas fa-list"></i> Lista de Moradores</h2>
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Buscar morador..." (input)="filtrarMoradores($event)" />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+
+      <div *ngIf="moradoresFiltrados.length > 0; else noResults" class="moradores-container">
+        <div id="moradores-header">
+          <span class="col-nome">Nome</span>
+          <span class="col-apto">Apartamento</span>
+          <span class="col-telefone">Telefone</span>
+          <span class="col-acoes">Ações</span>
+        </div>
+
+        <ul id="lista-moradores">
+          <li class="morador-item" *ngFor="let morador of moradoresFiltrados">
+            <span class="col-nome">{{ morador.nome }}</span>
+            <span class="col-apto">{{ morador.apartamento }}</span>
+            <span class="col-telefone">{{ morador.telefone }}</span>
+            <span class="col-acoes">
+              <button type="button" class="btn btn-primary" (click)="editarMorador(morador)">Editar</button>
+              <button type="button" class="btn btn-danger" (click)="confirmarExclusao(morador)">Excluir</button>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <ng-template #noResults>
+        <div id="no-results" class="no-results">
+          <i class="fas fa-search"></i>
+          <p>Nenhum morador encontrado</p>
+        </div>
+      </ng-template>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2025 Sistema ChegAí de Gestão de Moradores. Todos os direitos
+      reservados.
+    </p>
+  </footer>
+
+  <!-- Modal de confirmação -->
+  <div id="confirmation-modal" class="modal" *ngIf="mostrarModal">
+    <div class="modal-content">
+      <p id="confirmation-message">Tem certeza que deseja realizar esta ação?</p>
+      <div class="modal-actions">
+        <button id="confirm-button" class="btn btn-primary" (click)="excluirMorador()" [disabled]="!moradorSelecionado">
+          Confirmar
+        </button>
+        <button id="cancel-button" class="btn btn-secondary" (click)="cancelarExclusao()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de edição -->
+  <div class="modal" *ngIf="mostrarModalEdicao">
+    <div class="modal-content">
+      <h2><i class="fas fa-user-edit"></i> Editar Morador</h2>
+      <form [formGroup]="moradorForm" (ngSubmit)="atualizarMorador()">
+        <input type="hidden" formControlName="id" />
+
+        <div class="form-group">
+          <label for="nome-edit">Nome Completo</label>
+          <input type="text" id="nome-edit" formControlName="nome" placeholder="Ex: João da Silva" />
+        </div>
+
+        <div class="form-group">
+          <label for="apartamento-edit">Apartamento</label>
+          <input type="text" id="apartamento-edit" formControlName="apartamento" placeholder="Ex: Bloco A, Apto 101" />
+        </div>
+
+        <div class="form-group">
+          <label for="telefone-edit">Telefone</label>
+          <input type="tel" id="telefone-edit" formControlName="telefone" placeholder="Ex: (11) 99999-9999" />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Salvar
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="fecharModalEdicao()">Sair</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notificação -->
+  <div id="notification" class="notification" *ngIf="mostrarNotificacao">
+    <span id="notification-message">{{ mensagemNotificacao }}</span>
+    <button id="close-notification" (click)="fecharNotificacao()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+
+</div>

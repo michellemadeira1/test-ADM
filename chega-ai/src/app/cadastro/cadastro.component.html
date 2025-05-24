@@ -1,0 +1,84 @@
+<div class="login-page">
+  <div class="login-image">
+    <img src="img/Img_3.png" alt="ChegAí Logo" class="login-image-logo" />
+    <div class="login-image-text">
+      <h2>Cadastre-se no ChegAí</h2>
+      <p>Receba notificações em tempo real sobre suas entregas.</p>
+      <p>Fique tranquilo: nós avisamos quando seu pedido chegar no condomínio.</p>
+    </div>
+  </div>
+
+  <div class="login-container">
+    <div class="login-form-container">
+      <div class="login-header">
+        <h2>Crie sua conta</h2>
+        <p>Preencha os dados abaixo para começar</p>
+      </div>
+
+      <div class="form-message error hidden" *ngIf="mensagemErro">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>{{ mensagemErro }}</span>
+      </div>
+
+      <form class="form" (ngSubmit)="cadastrar()">
+        <div class="form-group">
+          <label for="cadastro-nome">Nome completo</label>
+          <div class="input-container">
+            <input
+              type="text"
+              id="cadastro-nome"
+              class="form-input"
+              placeholder="Seu nome completo"
+              [(ngModel)]="usuario.nome"
+              name="nome"
+              required
+            />
+            <i class="fas fa-user input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cadastro-email">E-mail</label>
+          <div class="input-container">
+            <input
+              type="email"
+              id="cadastro-email"
+              class="form-input"
+              placeholder="Seu melhor e-mail"
+              [(ngModel)]="usuario.email"
+              name="email"
+              required
+            />
+            <i class="fas fa-envelope input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cadastro-senha">Senha</label>
+          <div class="input-container">
+            <input
+              type="password"
+              id="cadastro-senha"
+              class="form-input"
+              placeholder="Mínimo 6 caracteres"
+              [(ngModel)]="usuario.senha"
+              name="senha"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Cadastrar</button>
+      </form>
+
+      <div class="form-footer">
+        <p>Já possui conta? <a routerLink="/login" class="link">Faça login</a></p>
+      </div>
+
+      <div class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        <a routerLink="/home" class="link">Voltar para a página inicial</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,390 @@
+/* Variáveis */
+$primary-color: #2c3e50;
+$secondary-color: #3498db;
+$background-color: #f5f5f5;
+$text-color: #333;
+$white: #fff;
+$gray: #777;
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: $text-color;
+  background-color: $background-color;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background: $white;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &.header-scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    &.active {
+      display: block;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: $text-color;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+
+    .btn-primary {
+      background: $secondary-color;
+      color: $white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+
+      &:hover {
+        background: darken($secondary-color, 10%);
+      }
+    }
+  }
+}
+
+/* Hero */
+.hero {
+  padding: 100px 0 50px;
+  text-align: center;
+  position: relative;
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: $gray;
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+
+  .hero-background-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: auto;
+    z-index: -1;
+    opacity: 0.2;
+  }
+}
+
+/* Section padrão */
+section {
+  padding: 60px 0;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h2 {
+      font-size: 28px;
+      color: $primary-color;
+    }
+  }
+}
+
+/* Benefits */
+.benefits-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+
+  .benefit-card {
+    background: $white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    .benefit-icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+      color: $secondary-color;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+/* Como funciona */
+.how-it-works {
+  .steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+
+    .step {
+      background: $white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+      .step-number {
+        background: $secondary-color;
+        color: $white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        font-weight: bold;
+      }
+
+      .step-content h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .step-connection {
+        height: 20px;
+      }
+    }
+  }
+}
+
+/* Sobre */
+.about {
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+
+    .about-image img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .about-text {
+      flex: 1;
+
+      p {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+/* Contato */
+.contact {
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+
+        .form-label {
+          margin-bottom: 5px;
+        }
+
+        .form-input {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+      }
+
+      .form-submit {
+        align-self: flex-start;
+      }
+    }
+  }
+}
+
+/* Footer */
+.footer {
+  background: $primary-color;
+  color: $white;
+  padding: 40px 0;
+
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+
+    .footer-about,
+    .footer-links,
+    .footer-contact {
+      flex: 1;
+      min-width: 200px;
+
+      h3 {
+        margin-bottom: 15px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 10px;
+
+          a {
+            color: $white;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 10px;
+
+        i {
+          margin-top: 5px;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .social-media {
+        margin-top: 10px;
+
+        .social-icon {
+          margin-right: 10px;
+          color: $white;
+          font-size: 18px;
+
+          &:hover {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: $white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .header .nav-toggle {
+    display: block;
+  }
+
+  .about .about-content {
+    flex-direction: column;
+  }
+
+  .footer .footer-content {
+    flex-direction: column;
+  }
+
+  .hero .hero-background-image {
+    display: none;
+  }
+}

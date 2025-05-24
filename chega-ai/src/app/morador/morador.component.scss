@@ -1,0 +1,314 @@
+// Variáveis
+$primary-color: #007BFF;
+$secondary-color: #6C757D;
+$background-color: #F8F9FA;
+$text-color: #343A40;
+$white: #fff;
+$border-radius: 8px;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 2rem;
+    color: $primary-color;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: $secondary-color;
+  }
+}
+
+.card {
+  background: $white;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  padding: 20px;
+  margin-bottom: 30px;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: $primary-color;
+  }
+}
+
+.form-group {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: $border-radius;
+    background-color: #fff;  // fundo branco para inputs editáveis
+    color: #495057;
+    cursor: text; // cursor normal para edição
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+      background-color: #e9f0ff; // leve destaque ao focar
+    }
+  }
+
+  // Inputs desabilitados, conforme regra no fim do seu código
+  input:disabled {
+    background-color: #fff;
+    color: #000;
+    opacity: 1;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    opacity: 1;
+    transition: background-color 0.3s, opacity 0.3s;
+
+    &.btn-primary {
+      background-color: $primary-color;
+      color: $white;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+
+    &.btn-secondary {
+      background-color: $secondary-color;
+      color: $white;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+
+  .search-box {
+    display: flex;
+    align-items: center;
+
+    input {
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: $border-radius;
+      background-color: #fff; // fundo branco para pesquisa
+      cursor: text;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        background-color: #e9f0ff;
+      }
+    }
+
+    i {
+      margin-left: 8px;
+      color: $secondary-color;
+    }
+  }
+}
+
+.moradores-container {
+  #moradores-header,
+  .morador-item {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 1fr;
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6;
+
+    span {
+      padding: 0 5px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .morador-item {
+    color: #6c757d;
+
+    .col-acoes {
+      button {
+        opacity: 1;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+    }
+  }
+}
+
+#no-results {
+  text-align: center;
+  padding: 20px;
+  color: $secondary-color;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.navigation {
+  text-align: center;
+  margin-top: 20px;
+
+  .btn-voltar {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: $secondary-color;
+    color: $white;
+    text-decoration: none;
+    border-radius: $border-radius;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: $secondary-color;
+}
+
+.modal {
+  &.hidden {
+    display: none;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); // Fundo escuro semitransparente para destaque
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  .modal-content {
+    background: $white;
+    padding: 20px;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+
+    .modal-actions {
+      margin-top: 15px;
+
+      button {
+        padding: 10px 20px;
+        margin: 0 5px;
+        border: none;
+        border-radius: $border-radius;
+        background-color: $primary-color;
+        color: $white;
+        cursor: pointer;
+        opacity: 1;
+
+        &:disabled {
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+
+        &.btn-secondary {
+          background-color: $secondary-color;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $primary-color;
+  color: $white;
+  padding: 15px 20px;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.hidden {
+    display: none;
+  }
+
+  #close-notification {
+    background: none;
+    border: none;
+    color: $white;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}
+
+input:invalid {
+  box-shadow: none;
+  border-color: inherit; /* ou a cor padrão que você usa */
+}
+
+input:disabled {
+  background-color: #fff;
+  color: #000;
+  opacity: 1;
+  border: 1px solid #ccc; /* opcional */
+  cursor: not-allowed;
+}

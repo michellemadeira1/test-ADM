@@ -1,0 +1,94 @@
+<body>
+  <aside class="sidebar">
+    <button class="sidebar-toggle">
+      <i data-feather="chevron-left"></i>
+    </button>
+    <div class="logo-container">
+      <i data-feather="package" size="24"></i>
+      <h2>Gestão</h2>
+    </div>
+    <nav>
+        <a routerLink="/mainLogin"  class="active">
+        <i data-feather="home"></i>
+        <span>Início</span>
+      </a>
+      <a routerLink="/morador">
+        <i data-feather="users"></i>
+        <span>Moradores</span>
+      </a>
+      <a routerLink="/encomenda">
+        <i data-feather="package"></i>
+        <span>Encomendas</span>
+      </a>
+      <a routerLink="/entregas">
+        <i data-feather="bell"></i>
+        <span>Entregas</span>
+      </a>
+    </nav>
+    <div class="user-profile">
+      <div class="user-avatar">P</div>
+      <div class="user-info">
+        <div class="user-name">Porteiro</div>
+        <div class="user-role">Administrador</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="mobile-header">
+      <button class="mobile-toggle-btn">
+        <i data-feather="menu"></i>
+      </button>
+    </div>
+
+    <div class="top-bar">
+      <div class="search-container">
+        <i data-feather="search" size="18"></i>
+        <input type="text" placeholder="Pesquisar...">
+      </div>
+
+      <div class="notification-icon">
+        <i data-feather="bell" size="20"></i>
+        <span class="notification-badge">3</span>
+      </div>
+    </div>
+
+    <!-- CONTEÚDO DA PÁGINA: NOVA ENCOMENDA -->
+    <div class="page-content">
+      <div class="page-header">
+        <h1 class="page-title">Nova Encomenda</h1>
+        <p class="page-subtitle">Cadastro rápido de encomendas</p>
+      </div>
+
+      <div class="form-container">
+        <div class="form-section">
+          <label class="form-label">Buscar Morador</label>
+          <div class="search-resident">
+            <div class="search-resident-icon"></div>
+            <input type="text" class="search-resident-input" placeholder="Digite o nome ou apartamento do morador">
+          </div>
+
+          <div class="resident-card">
+            <div class="resident-avatar">M</div>
+            <div class="resident-info">
+              <div class="resident-name">Maria Silva</div>
+              <div class="resident-details">Apartamento 302 - Torre A</div>
+              <div class="resident-details">WhatsApp: (11) 99999-9999</div>
+              <div class="resident-details">WhatsApp: (11) 99999-9999</div>
+            </div>
+            <div class="notify-badge">
+              <div class="whatsapp-icon"></div>
+              Notificar
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Apenas mantém feather.replace() para carregar os ícones -->
+  <script>
+    feather.replace();
+  </script>
+</body>
