@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Morador {
+entregas: any;
   id?: number;
   nome: string;
   apartamento: string;

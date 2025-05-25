@@ -62,7 +62,8 @@ export class MoradorComponent implements OnInit {
     const morador: Morador = {
       nome: this.moradorForm.value.nome,
       apartamento: this.moradorForm.value.apartamento,
-      telefone: this.moradorForm.value.telefone
+      telefone: this.moradorForm.value.telefone,
+      entregas: undefined
     };
 
     this.moradorService.cadastrar(morador).subscribe({

@@ -3,10 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Encomenda {
+moradores: any;
   id?: number;
   descricao: string;
   dataRecebimento: string;
   status: 'PENDENTE' | 'ENTREGUE' | 'CANCELADA'; // ajuste conforme o seu enum StatusEncomenda
+  apartamento: string;
+  nome: string;
   morador: any; // Substitua por um tipo mais específico se houver
   usuario: any; // Substitua por um tipo mais específico se houver
 }
@@ -15,6 +18,9 @@ export interface Encomenda {
   providedIn: 'root'
 })
 export class EntregasService {
+  getEntregas() {
+    throw new Error('Method not implemented.');
+  }
   private readonly baseUrl = 'http://localhost:8080/encomendas';
 
   constructor(private http: HttpClient) {}
